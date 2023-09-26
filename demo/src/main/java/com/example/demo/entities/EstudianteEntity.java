@@ -16,7 +16,7 @@ public class EstudianteEntity {
     @Id
     /*@GeneratedValue(strategy = GenerationType.IDENTITY) para generar los valores en forma automatica*/
     @Column(unique = true,nullable = false)
-    private Integer rut_estud;
+    private String rut_estud;
 
     private String apellidos_estud;
     private String nombres_estud;
@@ -24,4 +24,6 @@ public class EstudianteEntity {
     private String tipo_colegio;
     private String nombre_colegio;
     private Integer año_egreso;
+    private String tipo_pago;
+    private Integer cant_cuotas;
 }
