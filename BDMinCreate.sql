@@ -1,13 +1,13 @@
 CREATE TABLE estudiante
 (
-    rut_estud char[10] PRIMARY KEY,
-    apellidos_estud char[30] NOT NULL,
-    nombres_estud char[30] NOT NULL,
+    rut varchar(10) PRIMARY KEY,
+    apellidos varchar(30) NOT NULL,
+    nombres varchar(30) NOT NULL,
     fecha_nac date NOT NULL,
-    tipo_colegio char[13] NOT NULL,
-    nombre_colegio char[30] NOT NULL,
+    tipo_colegio varchar(13) NOT NULL,
+    nombre_colegio varchar(30) NOT NULL,
     año_egreso Int NOT NULL,
-    tipo_pago char[7] NOT NULL, --CONTADO/CUOTAS
+    tipo_pago varchar(7) NOT NULL, --CONTADO/CUOTAS
     cant_cuotas int
     --nro cuotas pagadas
     --monto total pagado

@@ -1,9 +1,14 @@
 package com.example.demo.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+
 
 import java.util.Date;
 
@@ -16,10 +21,9 @@ public class EstudianteEntity {
     @Id
     /*@GeneratedValue(strategy = GenerationType.IDENTITY) para generar los valores en forma automatica*/
     @Column(unique = true,nullable = false)
-    private String rut_estud;
-
-    private String apellidos_estud;
-    private String nombres_estud;
+    private String rut;
+    private String apellidos;
+    private String nombres;
     private Date fecha_nac;
     private String tipo_colegio;
     private String nombre_colegio;

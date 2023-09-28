@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TopEducation</title>
+</head>
+<body>
+<form th:action="@{/ingresar-estudiante}" method="post">
+    <h1>TopEducation</h1>
+    <b>RUT</b>
+    <input type="text" name="rut"
+            placeholder="Ej. 12345678-9" required >
+    <b>Nombres</b>
+    <input type="text" name="nombres">
+    <b>Apellidos</b>
+    <input type="text" name="apellidos">
+    <b>Fecha de nacimiento</b>
+    <input type="date" name="fecha_nac">
+    <br>
+    <br>
+    <b>Tipo de colegio</b>
+    <select name="tipo_colegio" size="1">
+        <option label="SUBVENCIONADO" value="SUBVENCIONADO"></option>
+        <option label="PRIVADO" value="PRIVADO"></option>
+        <option label="MUNICIPAL" value="MUNICIPAL"></option>
+    </select>
+    <b>Nombre de colegio</b>
+    <input type="text" name="nombre_colegio">
+    <b>Año de egreso</b>
+    <input type="number" name="año_egreso" min="1990" max="2024">
+    <br>
+    <br>
+    <b>Tipo de pago</b>
+    <select name="tipo_pago" size="1">
+        <option label="CONTADO" value="CONTADO"></option>
+        <option label="CUOTAS" value="CUOTAS"></option>
+    </select>
+    <b>Cantidad de cuotas</b>
+    <input type="number" name="cant_cuotas" min="2" max="10">
+    <br>
+    <br>
+    <button type="submit">Ingresar</button>
+</form>
+</body>
+</html>
