@@ -12,27 +12,27 @@
     <input type="text" name="rut"
             placeholder="Ej. 12345678-9" required >
     <b>Nombres</b>
-    <input type="text" name="nombres">
+    <input type="text" name="nombres" required>
     <b>Apellidos</b>
-    <input type="text" name="apellidos">
+    <input type="text" name="apellidos" required>
     <b>Fecha de nacimiento</b>
-    <input type="date" name="fecha_nac">
+    <input type="date" name="fecha_nac" required>
     <br>
     <br>
     <b>Tipo de colegio</b>
-    <select name="tipo_colegio" size="1">
+    <select name="tipo_colegio" size="1" required>
         <option label="SUBVENCIONADO" value="SUBVENCIONADO"></option>
         <option label="PRIVADO" value="PRIVADO"></option>
         <option label="MUNICIPAL" value="MUNICIPAL"></option>
     </select>
     <b>Nombre de colegio</b>
-    <input type="text" name="nombre_colegio">
+    <input type="text" name="nombre_colegio" required>
     <b>Año de egreso</b>
     <input type="number" name="año_egreso" min="1990" max="2024">
     <br>
     <br>
     <b>Tipo de pago</b>
-    <select name="tipo_pago" size="1">
+    <select name="tipo_pago" size="1" required>
         <option label="CONTADO" value="CONTADO"></option>
         <option label="CUOTAS" value="CUOTAS"></option>
     </select>
