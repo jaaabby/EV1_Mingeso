@@ -20,7 +20,7 @@
     <br>
     <br>
     <b>Tipo de colegio</b>
-    <select name="tipo_colegio" size="1" required>
+    <select id="tipo_colegio" name="tipo_colegio" size="1" required>
         <option label="SUBVENCIONADO" value="SUBVENCIONADO"></option>
         <option label="PRIVADO" value="PRIVADO"></option>
         <option label="MUNICIPAL" value="MUNICIPAL"></option>
@@ -32,15 +32,39 @@
     <br>
     <br>
     <b>Tipo de pago</b>
-    <select name="tipo_pago" size="1" required>
+    <select id="tipo_pago" name="tipo_pago" size="1" required>
         <option label="CONTADO" value="CONTADO"></option>
         <option label="CUOTAS" value="CUOTAS"></option>
     </select>
     <b>Cantidad de cuotas</b>
-    <input type="number" name="cant_cuotas" min="2" max="10">
+    <select id="cant_cuotas" name="cant_cuotas">
+        <option label="0" value="0"></option>
+    </select>
     <br>
     <br>
     <button type="submit">Ingresar</button>
 </form>
+<script>
+    var tipoSelect = document.getElementById("tipo_pago");
+    var opcionSelect = document.getElementById("cant_cuotas");
+    var opcionesPorTipo = {
+        CONTADO: [0],
+        MUNICIPAL: [2,3,4,5,6,7,8,9,10],
+        SUBVENCIONADO: [2,3,4,5,6,7],
+        PRIVADO: [2,3,4]
+        };
+    var tipoColegio = document.getElementById("tipo_colegio);
+
+    tipoSelect.addEventListener("change", function() {
+        var tipoSeleccionado = tipoSelect.value;
+        opcionSelect.innerHTML = "";
+        opcionesPorTipo[tipoSeleccionado].forEach(function(opcion) {
+            var opcionElemento = document.createElement("option");
+            opcionElemento.value = opcion;
+            opcionElemento.text = opcion;
+            opcionSelect.add(opcionElemento);
+        });
+    });
+</script>
 </body>
 </html>
