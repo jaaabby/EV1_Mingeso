@@ -45,24 +45,39 @@
     <button type="submit">Ingresar</button>
 </form>
 <script>
-    var tipoSelect = document.getElementById("tipo_pago");
-    var opcionSelect = document.getElementById("cant_cuotas");
-    var opcionesPorTipo = {
-        CONTADO: [0],
-        MUNICIPAL: [2,3,4,5,6,7,8,9,10],
-        SUBVENCIONADO: [2,3,4,5,6,7],
-        PRIVADO: [2,3,4]
-        };
-    var tipoColegio = document.getElementById("tipo_colegio);
+    var tipoPago = document.getElementById("tipo_pago");
+    var cantCuotas = document.getElementById("cant_cuotas");
+    var tipoColegio = document.getElementById("tipo_colegio");
+    var opciones = {
+        CONTADO: {  MUNICIPAL: [],
+                    SUBVENCIONADO: [],
+                    PRIVADO: []},
+        CUOTAS: {   MUNICIPAL: [2,3,4,5,6,7,8,9,10],
+                    SUBVENCIONADO: [2,3,4,5,6,7],
+                    PRIVADO: [2,3,4]}
+    }
 
-    tipoSelect.addEventListener("change", function() {
-        var tipoSeleccionado = tipoSelect.value;
-        opcionSelect.innerHTML = "";
-        opcionesPorTipo[tipoSeleccionado].forEach(function(opcion) {
+    tipoColegio.addEventListener("change", function() {
+        var tipoColegioSeleccionado = tipoColegio.value;
+        var tipoPagoSeleccionado = tipoPago.value;
+        cantCuotas.innerHTML = "";
+        opciones[tipoPagoSeleccionado][tipoColegioSeleccionado].forEach(function(opcion) {
             var opcionElemento = document.createElement("option");
             opcionElemento.value = opcion;
             opcionElemento.text = opcion;
-            opcionSelect.add(opcionElemento);
+            cantCuotas.add(opcionElemento);
+        });
+    });
+
+    tipoPago.addEventListener("change", function() {
+        var tipoPagoSeleccionado = tipoPago.value;
+        var tipoColegioSeleccionado = tipoColegio.value;
+        cantCuotas.innerHTML = "";
+        opciones[tipoPagoSeleccionado][tipoColegioSeleccionado].forEach(function(opcion) {
+            var opcionElemento = document.createElement("option");
+            opcionElemento.value = opcion;
+            opcionElemento.text = opcion;
+            cantCuotas.add(opcionElemento);
         });
     });
 </script>
