@@ -1,11 +1,15 @@
 package com.example.demo.services;
 
 import com.example.demo.entities.EstudianteEntity;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
 @Service
 public class AdministradorService {
+
+    @Autowired
+    CuotaService cuotaService;
 
     //Calcula el descuento según el tipo de pago
     //CONTADO: 50% de descuento; caso contrario 0%
@@ -50,11 +54,19 @@ public class AdministradorService {
         return descuentoPorAñosDeEgreso;
     }
 
-    public double generarCuotas(EstudianteEntity estudiante){
+    public double calcularValorPorCuota(EstudianteEntity estudiante){
         double descuentoTotal = calcularDescuentoPorTipoPago(estudiante) +
                                 calcularDescuentoPorTipoColegio(estudiante) +
                                 calcularDescuentoPorAñosDeEgreso(estudiante);
         double valorPorCuota = (1500000 - 1500000*descuentoTotal)/estudiante.getCant_cuotas();
         return valorPorCuota;
+    }
+
+    public void generarCuotas(EstudianteEntity estudiante){
+        int cantCuotas = estudiante.getCant_cuotas();
+        double monto = calcularValorPorCuota(estudiante);
+        for (int i = 1; i <= cantCuotas; i = i + 1){
+            cuotaService.guardarCuota(i,monto,"PENDIENTE",estudiante.getRut());
+        }
     }
 }
