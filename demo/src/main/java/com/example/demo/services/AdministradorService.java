@@ -50,5 +50,11 @@ public class AdministradorService {
         return descuentoPorAñosDeEgreso;
     }
 
-
+    public double generarCuotas(EstudianteEntity estudiante){
+        double descuentoTotal = calcularDescuentoPorTipoPago(estudiante) +
+                                calcularDescuentoPorTipoColegio(estudiante) +
+                                calcularDescuentoPorAñosDeEgreso(estudiante);
+        double valorPorCuota = (1500000 - 1500000*descuentoTotal)/estudiante.getCant_cuotas();
+        return valorPorCuota;
+    }
 }
