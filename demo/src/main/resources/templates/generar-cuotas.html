@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TopEducation</title>
+</head>
+<body>
+<form th:action="@{/generar-cuotas}" method = "post">
+    <h1>Generar Cuotas</h1>
+    <b>RUT</b>
+    <input type="text" name="rut"
+           placeholder="Ingrese rut del estudiante" required>
+</form>
+</body>
+</html>

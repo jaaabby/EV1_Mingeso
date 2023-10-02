@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>TopEducation</title>
 </head>
 <body>
-
+<h1>Home</h1>
+<ul>
+    <li><a th:href="@{/ingresar-estudiante}">Ingresar Estudiante</a></li>
+    <li><a th:href="@{/generar-cuotas}">Generar Cuotas</a></li>
+</ul>
 </body>
 </html>

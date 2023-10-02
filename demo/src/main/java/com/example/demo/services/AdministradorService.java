@@ -8,9 +8,6 @@ import java.time.LocalDateTime;
 @Service
 public class AdministradorService {
 
-    @Autowired
-    CuotaService cuotaService;
-
     //Calcula el descuento según el tipo de pago
     //CONTADO: 50% de descuento; caso contrario 0%
     public double calcularDescuentoPorTipoPago(EstudianteEntity estudiante){
@@ -62,11 +59,4 @@ public class AdministradorService {
         return valorPorCuota;
     }
 
-    public void generarCuotas(EstudianteEntity estudiante){
-        int cantCuotas = estudiante.getCant_cuotas();
-        double monto = calcularValorPorCuota(estudiante);
-        for (int i = 1; i <= cantCuotas; i = i + 1){
-            cuotaService.guardarCuota(i,monto,"PENDIENTE",estudiante.getRut());
-        }
-    }
 }

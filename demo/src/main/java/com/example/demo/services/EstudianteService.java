@@ -31,4 +31,8 @@ public class EstudianteService {
         estudiante.setCant_cuotas(cant_cuotas);
         estudianteRepository.save(estudiante);
     }
+
+    public int obtenerCantCuotas(String rut){return estudianteRepository.findCantCuotas(rut);}
+
+    public EstudianteEntity findByRut(String rut){return estudianteRepository.findByRut(rut);}
 }
