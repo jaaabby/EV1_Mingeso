@@ -19,7 +19,6 @@ import java.util.Date;
 @AllArgsConstructor
 public class EstudianteEntity {
     @Id
-    /*@GeneratedValue(strategy = GenerationType.IDENTITY) para generar los valores en forma automatica*/
     @Column(unique = true,nullable = false)
     private String rut;
     private String apellidos;

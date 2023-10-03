@@ -1,11 +1,11 @@
 package com.example.demo.services;
 
 import com.example.demo.entities.CuotaEntity;
-import com.example.demo.entities.EstudianteEntity;
 import com.example.demo.repositories.CuotaRepository;
-import com.example.demo.repositories.EstudianteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 
 @Service
 public class CuotaService {
@@ -31,5 +31,9 @@ public class CuotaService {
         for (int i = 1; i <= cantCuotas; i = i + 1){
             guardarCuota(i,monto,"PENDIENTE",rut);
         }
+    }
+
+    public ArrayList<CuotaEntity> obtenerCuotasEstudiante(String rut) {
+        return (ArrayList<CuotaEntity>) cuotaRepository.findCuotasEstudiante(rut);
     }
 }

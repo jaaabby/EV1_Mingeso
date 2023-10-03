@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>TopEducation</title>
+    <title>Ingresar estudiante</title>
 </head>
 <body>
 <form th:action="@{/ingresar-estudiante}" method="post">
@@ -44,6 +44,9 @@
     <br>
     <button type="submit">Ingresar</button>
 </form>
+<ul>
+    <li><a th:href="@{/}">Volver al inicio</a></li>
+</ul>
 <script>
     var tipoPago = document.getElementById("tipo_pago");
     var cantCuotas = document.getElementById("cant_cuotas");
