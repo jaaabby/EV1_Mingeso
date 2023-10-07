@@ -24,7 +24,7 @@ public class ExamenController {
     public String importar(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
         examenService.guardar(file);
         redirectAttributes.addFlashAttribute("mensaje", "¡Archivo cargado correctamente!");
-        examenService.leerCsv("Acopio.csv");
+        examenService.leerCsv(file.getOriginalFilename());
         return "redirect:/importar-notas";
     }
 }

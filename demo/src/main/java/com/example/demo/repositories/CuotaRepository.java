@@ -14,4 +14,8 @@ public interface CuotaRepository extends CrudRepository<CuotaEntity,Long> {
             nativeQuery = true)
     ArrayList<CuotaEntity> findCuotasEstudiante(@Param("rut") String rut);
 
+    @Query(value = "update cuota set estado = :estado where rut = :rut and nro_cuota = :nro_cuota",
+            nativeQuery = true)
+    void cambiarEstadoCuota(@Param("estado") String estado,@Param("rut") String rut);
+
 }

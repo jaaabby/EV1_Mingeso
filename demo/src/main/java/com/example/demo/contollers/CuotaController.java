@@ -38,6 +38,17 @@ public class CuotaController {
     @PostMapping("/generar-cuotas")
     public String generarCuotas(@RequestParam("rut") String rut){
         cuotaService.generarCuotas(rut);
-        return "redirect:/";
+        return "redirect:/generar-cuotas";
     }
+
+    @GetMapping("/registrar-pago")
+    public String registrarPago(){
+        return "registrar-pago";
+    }
+    @PostMapping("/registrar-pago")
+        public String registrarPago(@RequestParam("rut") String rut){
+        cuotaService.registrarPago(rut);
+        return "redirect:/registrar-pago";
+    }
+
 }

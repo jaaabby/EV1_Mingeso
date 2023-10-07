@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>TopEducation</title>
+</head>
+<body>
+<form th:action="@{/registrar-pago}" method = "update">
+  <h1>Registrar Pago</h1>
+  <b>RUT</b>
+  <input type="text" name="rut"
+         placeholder="Ingrese rut del estudiante" required>
+</form>
+<ul>
+  <li><a th:href="@{/registrar-pago}">Volver al inicio</a></li>
+</ul>
+</body>
+</html>

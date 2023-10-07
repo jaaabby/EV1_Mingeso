@@ -6,6 +6,12 @@
     <title>TopEducation</title>
 </head>
 <body>
-
+<h1>Importar notas</h1>
+<form th:action="@{/importar-notas}" method="post" enctype="multipart/form-data">
+    <input type="file" class="form-control" name="file" accept=".csv">
+    <input class = "btn btn-primary"
+           type="submit" value="Cargar el archivo a la Base de Datos">
+    <u><b> <h2 th:text="${mensaje}"></h2></b></u>
+</form>
 </body>
 </html>

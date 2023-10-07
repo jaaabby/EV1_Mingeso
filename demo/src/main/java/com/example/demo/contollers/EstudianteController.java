@@ -20,13 +20,6 @@ public class EstudianteController {
     @Autowired
     private EstudianteService estudianteService;
 
-    /*@GetMapping("/ingresar")
-    public String listar(Model model){
-        ArrayList<EstudianteEntity>estudiante=estudianteService.obtenerEstudiantes();
-        model.addAttribute("estudiante",estudiante);
-        return "index";
-    }*/
-
     @GetMapping("/ingresar-estudiante")
     public String estudiante() {return "ingresar-estudiante";}
     @PostMapping("/ingresar-estudiante")

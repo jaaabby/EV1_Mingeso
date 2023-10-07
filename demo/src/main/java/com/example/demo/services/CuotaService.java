@@ -36,4 +36,16 @@ public class CuotaService {
     public ArrayList<CuotaEntity> obtenerCuotasEstudiante(String rut) {
         return (ArrayList<CuotaEntity>) cuotaRepository.findCuotasEstudiante(rut);
     }
+
+    public void registrarPago(String rut){
+        ArrayList<CuotaEntity> cuotasEstudiante = obtenerCuotasEstudiante(rut);
+        CuotaEntity cuota;
+        for(int i = 0; i < cuotasEstudiante.size(); i++){
+            cuota = cuotasEstudiante.get(i);
+            if (cuota.getEstado() == "PENDIENTE"){
+                cuotaRepository.cambiarEstadoCuota("PAGADO",rut);
+                break;
+            }
+        }
+    }
 }
