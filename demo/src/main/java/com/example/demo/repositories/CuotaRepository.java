@@ -16,6 +16,6 @@ public interface CuotaRepository extends CrudRepository<CuotaEntity,Long> {
 
     @Query(value = "update cuota set estado = :estado where rut = :rut and nro_cuota = :nro_cuota",
             nativeQuery = true)
-    void cambiarEstadoCuota(@Param("estado") String estado,@Param("rut") String rut);
+    void cambiarEstadoCuota(@Param("estado") String estado,@Param("rut") String rut,@Param("nro_cuota") Integer nro_cuota);
 
 }

@@ -6,14 +6,15 @@
   <title>TopEducation</title>
 </head>
 <body>
-<form th:action="@{/registrar-pago}" method = "update">
+<form th:action="@{/registrar-pago}" method = "post">
   <h1>Registrar Pago</h1>
   <b>RUT</b>
   <input type="text" name="rut"
          placeholder="Ingrese rut del estudiante" required>
+  <button type="submit">Registrar</button>
 </form>
 <ul>
-  <li><a th:href="@{/registrar-pago}">Volver al inicio</a></li>
+  <li><a th:href="@{/}">Volver al inicio</a></li>
 </ul>
 </body>
 </html>

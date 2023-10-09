@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 @Service
 public class CuotaService {
@@ -39,11 +40,11 @@ public class CuotaService {
 
     public void registrarPago(String rut){
         ArrayList<CuotaEntity> cuotasEstudiante = obtenerCuotasEstudiante(rut);
-        CuotaEntity cuota;
-        for(int i = 0; i < cuotasEstudiante.size(); i++){
-            cuota = cuotasEstudiante.get(i);
-            if (cuota.getEstado() == "PENDIENTE"){
-                cuotaRepository.cambiarEstadoCuota("PAGADO",rut);
+        for (int i = 0; i < cuotasEstudiante.size();i++){
+            CuotaEntity cuota = cuotasEstudiante.get(i);
+            if (cuota.getEstado().equals("PENDIENTE")){
+                cuota.setEstado("PAGADO");
+                cuotaRepository.save(cuota);
                 break;
             }
         }
