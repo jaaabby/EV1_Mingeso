@@ -14,8 +14,6 @@ public class AdministradorService {
         double descuentoPorTipoPago = 0;
         if(estudiante.getTipo_pago() == "CONTADO"){
             descuentoPorTipoPago = 0.5;
-        }else{
-            return descuentoPorTipoPago;
         }
         return descuentoPorTipoPago;
     }
@@ -26,12 +24,14 @@ public class AdministradorService {
     //PRIVADO: 0% de descuento
     public double calcularDescuentoPorTipoColegio(EstudianteEntity estudiante){
         double descuentoPorTipoColegio = 0;
-        if(estudiante.getTipo_colegio() == "MUNICIPAL"){
-            descuentoPorTipoColegio = 0.2;
-        } else if (estudiante.getTipo_colegio() == "SUBVENCIONADO") {
-            descuentoPorTipoColegio = 0.1;
-        }else {
+        if(estudiante.getTipo_pago() == "CONTADO"){
             return descuentoPorTipoColegio;
+        }else{
+            if(estudiante.getTipo_colegio() == "MUNICIPAL"){
+                descuentoPorTipoColegio = 0.2;
+            } else if (estudiante.getTipo_colegio() == "SUBVENCIONADO") {
+                descuentoPorTipoColegio = 0.1;
+            }
         }
         return descuentoPorTipoColegio;
     }
@@ -39,14 +39,16 @@ public class AdministradorService {
     public double calcularDescuentoPorAñosDeEgreso(EstudianteEntity estudiante){
         int cantidadAñosDeEgreso = LocalDateTime.now().getYear() - estudiante.getAño_egreso();
         double descuentoPorAñosDeEgreso = 0;
-        if (cantidadAñosDeEgreso == 0){
-            descuentoPorAñosDeEgreso = 0.15;
-        } else if (cantidadAñosDeEgreso == 1 || cantidadAñosDeEgreso == 2) {
-            descuentoPorAñosDeEgreso = 0.08;
-        } else if (cantidadAñosDeEgreso == 3 || cantidadAñosDeEgreso == 4) {
-            descuentoPorAñosDeEgreso = 0.04;
-        } else {
+        if(estudiante.getTipo_pago() == "CONTADO"){
             return descuentoPorAñosDeEgreso;
+        }else{
+            if (cantidadAñosDeEgreso == 0){
+                descuentoPorAñosDeEgreso = 0.15;
+            } else if (cantidadAñosDeEgreso == 1 || cantidadAñosDeEgreso == 2) {
+                descuentoPorAñosDeEgreso = 0.08;
+            } else if (cantidadAñosDeEgreso == 3 || cantidadAñosDeEgreso == 4) {
+                descuentoPorAñosDeEgreso = 0.04;
+            }
         }
         return descuentoPorAñosDeEgreso;
     }
