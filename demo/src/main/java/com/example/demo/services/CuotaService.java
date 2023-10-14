@@ -5,6 +5,7 @@ import com.example.demo.repositories.CuotaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -39,14 +40,21 @@ public class CuotaService {
     }
 
     public void registrarPago(String rut){
-        ArrayList<CuotaEntity> cuotasEstudiante = obtenerCuotasEstudiante(rut);
-        for (int i = 0; i < cuotasEstudiante.size();i++){
-            CuotaEntity cuota = cuotasEstudiante.get(i);
-            if (cuota.getEstado().equals("PENDIENTE")){
-                cuota.setEstado("PAGADO");
-                cuotaRepository.save(cuota);
-                break;
+        int diaActual = LocalDate.now().getDayOfMonth();
+        if(diaActual >= 5 && diaActual <= 10){
+            ArrayList<CuotaEntity> cuotasEstudiante = obtenerCuotasEstudiante(rut);
+            for (int i = 0; i < cuotasEstudiante.size();i++){
+                CuotaEntity cuota = cuotasEstudiante.get(i);
+                if (cuota.getEstado().equals("PENDIENTE")){
+                    cuota.setEstado("PAGADO");
+                    cuotaRepository.save(cuota);
+                    break;
+                }
             }
         }
+    }
+
+    public void eliminarCuota(CuotaEntity cuota){
+        cuotaRepository.delete(cuota);
     }
 }

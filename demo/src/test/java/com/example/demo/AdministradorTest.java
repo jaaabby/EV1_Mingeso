@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -18,11 +19,11 @@ public class AdministradorTest {
     EstudianteEntity estudiante = new EstudianteEntity();
 
     @Test
-    void calcularDescuentoPorTipoPago(){
+    void calcularDescuentoPorPagoContado(){
         estudiante.setRut("20533473-4");
         estudiante.setNombres("Javiera Paz");
         estudiante.setApellidos("Vergara Salinas");
-        estudiante.setFecha_nac(new Date(2000,9,16));
+        estudiante.setFecha_nac(LocalDate.of(2000,9,16));
         estudiante.setTipo_colegio("SUBVENCIONADO");
         estudiante.setNombre_colegio("Colegio Nuestra Señora del Carmen");
         estudiante.setAño_egreso(2018);
@@ -38,7 +39,7 @@ public class AdministradorTest {
         estudiante.setRut("20533473-4");
         estudiante.setNombres("Javiera Paz");
         estudiante.setApellidos("Vergara Salinas");
-        estudiante.setFecha_nac(new Date(2000,9,16));
+        estudiante.setFecha_nac(LocalDate.of(2000,9,16));
         estudiante.setTipo_colegio("SUBVENCIONADO");
         estudiante.setNombre_colegio("Colegio Nuestra Señora del Carmen");
         estudiante.setAño_egreso(2018);
@@ -54,11 +55,11 @@ public class AdministradorTest {
         estudiante.setRut("20533473-4");
         estudiante.setNombres("Javiera Paz");
         estudiante.setApellidos("Vergara Salinas");
-        estudiante.setFecha_nac(new Date(2000,9,16));
+        estudiante.setFecha_nac(LocalDate.of(2000,9,16));
         estudiante.setTipo_colegio("SUBVENCIONADO");
         estudiante.setNombre_colegio("Colegio Nuestra Señora del Carmen");
         estudiante.setAño_egreso(2018);
-        estudiante.setTipo_pago("CUOTAS");
+        estudiante.setTipo_pago("CONTADO");
         estudiante.setCant_cuotas(5);
 
         double descuento = administradorService.calcularDescuentoPorAñosDeEgreso(estudiante);
@@ -70,7 +71,7 @@ public class AdministradorTest {
         estudiante.setRut("20533473-4");
         estudiante.setNombres("Javiera Paz");
         estudiante.setApellidos("Vergara Salinas");
-        estudiante.setFecha_nac(new Date(2000,9,16));
+        estudiante.setFecha_nac(LocalDate.of(2000,9,16));
         estudiante.setTipo_colegio("SUBVENCIONADO");
         estudiante.setNombre_colegio("Colegio Nuestra Señora del Carmen");
         estudiante.setAño_egreso(2018);

@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -23,7 +23,7 @@ public class EstudianteEntity {
     private String rut;
     private String apellidos;
     private String nombres;
-    private Date fecha_nac;
+    private LocalDate fecha_nac;
     private String tipo_colegio;
     private String nombre_colegio;
     private Integer año_egreso;

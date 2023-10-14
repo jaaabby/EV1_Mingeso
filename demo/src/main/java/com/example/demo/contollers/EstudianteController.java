@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Controller
@@ -26,7 +27,7 @@ public class EstudianteController {
     public String nuevoEstudiante(@RequestParam("rut") String rut,
                                   @RequestParam("apellidos") String apellidos,
                                   @RequestParam("nombres") String nombres,
-                                  @RequestParam("fecha_nac") Date fecha_nac,
+                                  @RequestParam("fecha_nac") LocalDate fecha_nac,
                                   @RequestParam("tipo_colegio") String tipo_colegio,
                                   @RequestParam("nombre_colegio") String nombre_colegio,
                                   @RequestParam("año_egreso") Integer año_egreso,

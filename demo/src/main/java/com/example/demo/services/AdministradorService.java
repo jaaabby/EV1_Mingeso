@@ -1,7 +1,6 @@
 package com.example.demo.services;
 
 import com.example.demo.entities.EstudianteEntity;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 
@@ -12,7 +11,7 @@ public class AdministradorService {
     //CONTADO: 50% de descuento; caso contrario 0%
     public double calcularDescuentoPorTipoPago(EstudianteEntity estudiante){
         double descuentoPorTipoPago = 0;
-        if(estudiante.getTipo_pago() == "CONTADO"){
+        if(estudiante.getTipo_pago().equals("CONTADO")){
             descuentoPorTipoPago = 0.5;
         }
         return descuentoPorTipoPago;
@@ -24,12 +23,12 @@ public class AdministradorService {
     //PRIVADO: 0% de descuento
     public double calcularDescuentoPorTipoColegio(EstudianteEntity estudiante){
         double descuentoPorTipoColegio = 0;
-        if(estudiante.getTipo_pago() == "CONTADO"){
+        if(estudiante.getTipo_pago().equals("CONTADO")){
             return descuentoPorTipoColegio;
         }else{
-            if(estudiante.getTipo_colegio() == "MUNICIPAL"){
+            if(estudiante.getTipo_colegio().equals("MUNICIPAL")){
                 descuentoPorTipoColegio = 0.2;
-            } else if (estudiante.getTipo_colegio() == "SUBVENCIONADO") {
+            } else if (estudiante.getTipo_colegio().equals("SUBVENCIONADO")) {
                 descuentoPorTipoColegio = 0.1;
             }
         }
@@ -39,7 +38,7 @@ public class AdministradorService {
     public double calcularDescuentoPorAñosDeEgreso(EstudianteEntity estudiante){
         int cantidadAñosDeEgreso = LocalDateTime.now().getYear() - estudiante.getAño_egreso();
         double descuentoPorAñosDeEgreso = 0;
-        if(estudiante.getTipo_pago() == "CONTADO"){
+        if(estudiante.getTipo_pago().equals("CONTADO")){
             return descuentoPorAñosDeEgreso;
         }else{
             if (cantidadAñosDeEgreso == 0){
