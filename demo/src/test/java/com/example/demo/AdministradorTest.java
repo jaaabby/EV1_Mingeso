@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -19,7 +18,7 @@ public class AdministradorTest {
     EstudianteEntity estudiante = new EstudianteEntity();
 
     @Test
-    void calcularDescuentoPorPagoContado(){
+    void calcularDescuentoPorPago(){
         estudiante.setRut("20533473-4");
         estudiante.setNombres("Javiera Paz");
         estudiante.setApellidos("Vergara Salinas");
@@ -60,7 +59,7 @@ public class AdministradorTest {
         estudiante.setNombre_colegio("Colegio Nuestra Señora del Carmen");
         estudiante.setAño_egreso(2018);
         estudiante.setTipo_pago("CONTADO");
-        estudiante.setCant_cuotas(5);
+        estudiante.setCant_cuotas(0);
 
         double descuento = administradorService.calcularDescuentoPorAñosDeEgreso(estudiante);
         assertEquals(0,descuento,0.0);
