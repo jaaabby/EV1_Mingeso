@@ -1,5 +1,16 @@
 version: "3.8"
 services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx-proxy
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - top-education1
+      - top-education2
   postgres-db:
     image: jvergara1609/post
     container_name: bd-postgres
@@ -7,15 +18,33 @@ services:
       - ./data/db:/var/lib/postgresql
     ports:
       - "5432:5432"
-  app:
-    container_name: top-education
+  top-education1:
+    container_name: top-education1
     image: jvergara1609/top-education
     ports:
-      - "8090:8090"
+      - "8091:8090"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/BDMin?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
-        - SPRING_DATASOURCE_USERNAME=postgres
-        - SPRING_DATASOURCE_PASSWORD=0909
-        - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/BDMin
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=0909
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+    deploy:
+      restart_policy:
+        condition: on-failure
+    depends_on:
+      - postgres-db
+  top-education2:
+    container_name: top-education2
+    image: jvergara1609/top-education
+    ports:
+      - "8092:8090"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/BDMin
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=0909
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+    deploy:
+      restart_policy:
+        condition: on-failure
     depends_on:
       - postgres-db
