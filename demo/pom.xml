@@ -62,6 +62,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>TopEducationApp</finalName>
 	</build>
 
 </project>

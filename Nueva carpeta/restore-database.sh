@@ -1,0 +1,1 @@
+psql --username=postgres --dbname=BDMin < bdmingeso.sql

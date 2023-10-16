@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  postgres-db:
+    image: jvergara1609/post
+    container_name: bd-postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+  app:
+    container_name: top-education
+    image: jvergara1609/top-education
+    ports:
+      - "8090:8090"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-db:5432/BDMin?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
+        - SPRING_DATASOURCE_USERNAME=postgres
+        - SPRING_DATASOURCE_PASSWORD=0909
+        - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+    depends_on:
+      - postgres-db

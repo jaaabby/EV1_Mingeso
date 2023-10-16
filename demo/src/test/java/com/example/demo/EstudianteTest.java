@@ -29,7 +29,7 @@ public class EstudianteTest {
                 "CNSC",2020,"CONTADO",0);
         ArrayList<EstudianteEntity> estudiantes = (ArrayList<EstudianteEntity>) estudianteRepository.findAll();
         estudiante = estudiantes.get(estudiantes.size()-1);
-        assertEquals("20532473-5",estudiante.getRut());
+        assertEquals("20533473-4",estudiante.getRut());
         assertEquals("Vergara Torres",estudiante.getApellidos());
         assertEquals("Julieta Aneley",estudiante.getNombres());
         assertEquals(LocalDate.of(2000,9,9),estudiante.getFecha_nac());
