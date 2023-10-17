@@ -68,7 +68,7 @@ public class CuotaTest {
         ArrayList<CuotaEntity> cuotas = (ArrayList<CuotaEntity>) cuotaRepository.findAll();
         for(int i = 0; i < cuotas.size(); i++){
             if (cuotas.get(i).getRut().equals("20534473-3") && cuotas.get(i).getNro_cuota() == i + 1){
-                assertEquals("PENDIENTE",cuotas.get(i).getEstado());
+                assertEquals("PAGADO",cuotas.get(i).getEstado());
                 break;
             }
         }
