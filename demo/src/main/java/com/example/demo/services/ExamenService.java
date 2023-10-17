@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Date;
 
 @Service
@@ -88,5 +89,10 @@ public class ExamenService {
                 }
             }
         }
+    }
+
+    public ArrayList<ExamenEntity> findAll(){
+        ArrayList<ExamenEntity> examenes = (ArrayList<ExamenEntity>) examenRepository.findAll();
+        return examenes;
     }
 }

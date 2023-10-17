@@ -27,11 +27,25 @@ public class CuotaService {
         cuotaRepository.save(cuota);
     }
 
+    public boolean existeCuota(String rut){
+        ArrayList<CuotaEntity> cuotas = (ArrayList<CuotaEntity>) cuotaRepository.findAll();
+        boolean existe = false;
+        for(int i = 0; i < cuotas.size(); i++){
+            if(cuotas.get(i).getRut().equals(rut)){
+                existe = true;
+                break;
+            }
+        }
+        return existe;
+    }
+
     public void generarCuotas(String rut){
-        int cantCuotas = estudianteService.obtenerCantCuotas(rut);
-        double monto = administradorService.calcularValorPorCuota(estudianteService.findByRut(rut));
-        for (int i = 1; i <= cantCuotas; i = i + 1){
-            guardarCuota(i,monto,"PENDIENTE",rut);
+        if(!existeCuota(rut)){
+            int cantCuotas = estudianteService.obtenerCantCuotas(rut);
+            double monto = administradorService.calcularValorPorCuota(estudianteService.findByRut(rut));
+            for (int i = 1; i <= cantCuotas; i = i + 1){
+                guardarCuota(i,monto,"PENDIENTE",rut);
+            }
         }
     }
 
@@ -41,7 +55,7 @@ public class CuotaService {
 
     public void registrarPago(String rut){
         int diaActual = LocalDate.now().getDayOfMonth();
-        if(diaActual >= 17 && diaActual <= 20){
+        if(diaActual >= 5 && diaActual <= 10){
             ArrayList<CuotaEntity> cuotasEstudiante = obtenerCuotasEstudiante(rut);
             for (int i = 0; i < cuotasEstudiante.size();i++){
                 CuotaEntity cuota = cuotasEstudiante.get(i);

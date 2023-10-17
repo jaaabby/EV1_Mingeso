@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>TopEducation</title>
+</head>
+<body>
+<h1>Listado de examenes</h1>
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id examen</th>
+        <th>Fecha examen</th>
+        <th>Puntaje</th>
+        <th>Rut estudiante</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="examen:${examenes}">
+        <td th:text="${examen.id_examen}"></td>
+        <td th:text="${examen.fecha_examen}"></td>
+        <td th:text="${examen.puntaje}"></td>
+        <td th:text="${examen.rut}"></td>
+    </tr>
+    </tbody>
+</table>
+<ul>
+    <li><a th:href="@{/}">Volver al inicio</a></li>
+</ul>
+</body>
+</html>

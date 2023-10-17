@@ -55,6 +55,7 @@ public class CuotaTest {
                 cuotaService.eliminarCuota(cuotas.get(i));
             }
         }
+        estudianteService.eliminarEstudiante("20534473-3");
 
     }
 
