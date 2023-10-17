@@ -41,7 +41,7 @@ public class CuotaService {
 
     public void registrarPago(String rut){
         int diaActual = LocalDate.now().getDayOfMonth();
-        if(diaActual >= 5 && diaActual <= 10){
+        if(diaActual >= 17 && diaActual <= 20){
             ArrayList<CuotaEntity> cuotasEstudiante = obtenerCuotasEstudiante(rut);
             for (int i = 0; i < cuotasEstudiante.size();i++){
                 CuotaEntity cuota = cuotasEstudiante.get(i);
