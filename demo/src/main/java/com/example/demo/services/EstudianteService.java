@@ -28,7 +28,6 @@ public class EstudianteService {
     public void guardarEstudiante(String rut, String apellidos, String nombres, LocalDate fecha_nac,
                                   String tipo_colegio, String nombre_colegio, Integer año_egreso,
                                   String tipo_pago, Integer cant_cuotas){
-        if(!existeEstudiante(rut)){
             EstudianteEntity estudiante = new EstudianteEntity();
             estudiante.setRut(rut);
             estudiante.setApellidos(apellidos);
@@ -40,7 +39,6 @@ public class EstudianteService {
             estudiante.setTipo_pago(tipo_pago);
             estudiante.setCant_cuotas(cant_cuotas);
             estudianteRepository.save(estudiante);
-        }
     }
 
     public int obtenerCantCuotas(String rut){

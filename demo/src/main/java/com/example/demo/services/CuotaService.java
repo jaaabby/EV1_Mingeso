@@ -40,7 +40,8 @@ public class CuotaService {
     }
 
     public void generarCuotas(String rut){
-        if(!existeCuota(rut)){
+        if(existeCuota(rut)){
+        }else{
             int cantCuotas = estudianteService.obtenerCantCuotas(rut);
             double monto = administradorService.calcularValorPorCuota(estudianteService.findByRut(rut));
             for (int i = 1; i <= cantCuotas; i = i + 1){
